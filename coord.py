@@ -36,23 +36,11 @@ class Coord:
             return 3
 
     def find_quadrant_bordering(self, bounds: Bounds):
-        if self.x == bounds.max_x:
-            if self.y >= bounds.mid_y:
-                return 0
-            else:
-                return 3
-        elif self.x == bounds.min_x:
-            if self.y >= bounds.mid_y:
-                return 1
-            else:
-                return 2
-        elif self.y == bounds.max_y:
-            if self.x >= bounds.mid_x:
-                return 0
-            else:
-                return 1
+        if self.x >= bounds.mid_x and self.y >= bounds.mid_y:
+            return 0
+        if self.x <= bounds.mid_y and self.y >= bounds.mid_y:
+            return 1
+        if self.x <= bounds.mid_x and self.y <= bounds.mid_y:
+            return 2
         else:
-            if self.x >= bounds.mid_x:
-                return 3
-            else:
-                return 2
+            return 3
