@@ -6,22 +6,22 @@ from node import Node
 
 
 class QuadTree:
-    head: Node
+    root: Node
 
     def __init__(self, items):
-        head_bounds = Bounds(12, 12, -12, -12)
-        head_levels = Levels()
-        self.head = Node(head_bounds, head_levels)
+        root_bounds = Bounds(12, 12, -12, -12)
+        root_levels = Levels()
+        self.root = Node(root_bounds, root_levels)
         for item in items:
             self.add(item)
 
     def __repr__(self):
-        return "Tree:\n" + "\n".join(self.head.get_all_children([]))
+        return "Tree:\n" + "\n".join(self.root.get_all_children([]))
 
     def add(self, item):
         print(f"Adding {item}")
-        self.head.add_item(item)
+        self.root.add_item(item)
 
     def find(self, item) -> bool:
         print(f"Searching for {item}")
-        return self.head.find_item(item)
+        return self.root.find_item(item)
